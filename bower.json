@@ -1,16 +1,16 @@
 {
-  "name": "things-image-selector",
+  "name": "things-file-selector",
   "version": "0.1.0",
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
-  "description": "An element providing Things image selector.",
+  "description": "An element providing Things file selector.",
   "keywords": [
     "web-component",
     "polymer",
     "seed"
   ],
-  "main": "things-image-selector.html",
+  "main": "things-file-selector.html",
   "license": "http://polymer.github.io/LICENSE.txt",
   "homepage": "https://github.com/ThingsElements/seed-element/",
   "ignore": [
