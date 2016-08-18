@@ -1,0 +1,40 @@
+{
+  "name": "things-image-selector",
+  "version": "0.1.0",
+  "authors": [
+    "Hatio Lab. <heartyoh@hatiolab.com>"
+  ],
+  "description": "An element providing Things image selector.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed"
+  ],
+  "main": "things-image-selector.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/ThingsElements/seed-element/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-input": "PolymerElements/iron-input#^1.0.10",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.8",
+    "paper-icon-button": "PolymerElements/paper-icon-button#^1.1.1",
+    "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^1.1.4",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.4",
+    "things-ajax": "ThingsElements/things-ajax",
+    "things-card-image": "ThingsElements/things-card-image",
+    "iron-scroll-threshold": "^1.0.2",
+    "things-global-behavior": "ThingsElements/things-global-behavior",
+    "things-view-open-behavior": "ThingsElements/things-view-open-behavior",
+    "things-upload": "ThingsElements/things-upload"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "iron-demo-helpers": "^1.2.3"
+  }
+}
