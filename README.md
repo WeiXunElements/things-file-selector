@@ -1,4 +1,4 @@
-# things-image-selector
+# things-file-selector
 
 An element providing a starting point for your own reusable Polymer elements.
 
@@ -28,8 +28,8 @@ And you can run it via:
     polyserve
 
 Once running, you can preview your element at
-`http://localhost:8080/components/things-image-selector/`, where `things-image-selector` is the name of the directory containing it.
+`http://localhost:8080/components/things-file-selector/`, where `things-file-selector` is the name of the directory containing it.
 
 
 ## Example 1. Things image selector
-`<things-image-selector>` Things image selector
+`<things-file-selector>` Things File selector
