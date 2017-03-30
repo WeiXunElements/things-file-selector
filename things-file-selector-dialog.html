@@ -33,7 +33,7 @@
         @apply(--layout-vertical);
       }
       paper-dialog::shadow .toolbar-tools.paper-toolbar {
-        padding: 0 
+        padding: 0
       }
       paper-dialog::shadow span.title.things-image-selector {
         margin-left: 15px !important
@@ -87,7 +87,7 @@
       iron-scroll-threshold+paper-toolbar::shadow #topBar {
         float: right;
         margin-right: 9px
-      }    
+      }
     </style>
 
     <things-i18n-msg msgid="label.image-selector" msg="{{lImageSelector}}" auto hidden>Image Selector</things-i18n-msg>
@@ -100,7 +100,7 @@
       id="default-storage"
       resource-action="get">
     </things-ajax>
-    
+
     <things-ajax
       id="attachment-search"
       method="GET"
@@ -167,6 +167,7 @@
       properties: {
         /**
         * selector dialog 상단에 표기 되는 title
+        * @type: String
         */
         title: {
           type: String,
@@ -175,6 +176,7 @@
 
         /**
         * image objects를 호출할 resource url
+        * @type: String
         */
         resourceUrl: {
           type: String,
@@ -183,6 +185,7 @@
 
         /**
         * 총 페이지 수
+        * @type: Number
         */
         totalCount: {
           type: Number,
@@ -191,6 +194,7 @@
 
         /**
         * 현재 페이지
+        * @type: Number
         */
         page: {
           type: Number,
@@ -199,6 +203,7 @@
 
         /**
         * 한 페이지 당 보여질 레코드 수
+        * @type: Number
         */
         limit: {
           type: Number,
@@ -207,6 +212,7 @@
 
         /**
         * ajax 호출을 통해 받는 response
+        * @type: Object
         */
         lastResponse: {
           type: Object,
@@ -215,6 +221,7 @@
 
         /**
         * image가 아닌 파일들을 필터링한 후 초기화 하는 items object
+        * @type: Array
         */
         newItems: {
           type: Array,
@@ -226,6 +233,7 @@
         /**
         * detail form field에 mapping 시킬 data 목록들로 빈간이 없이 ','로 구분하여 입력합니다.
         * ex) name,description,file_size
+        * @type: String
         */
         detailFields: {
           type: String,
@@ -235,6 +243,7 @@
         /**
          * input field에 표시할 field 값을 선택 합니다.
          * 기본값은 name 필드
+         * @type: String
          */
         displayField: {
           type: String,
@@ -244,6 +253,7 @@
         /**
          * input field에 표시할 field 값을 선택 합니다.
          * 기본값은 name 필드
+         * @type: String
          */
         valueField: {
           type: String,
@@ -252,6 +262,7 @@
 
         /**
          * input field에 full url을 표시할지 여부를 결정 합니다.
+         * @type: Boolean
          */
         displayFullUrl: {
           type: Boolean,
@@ -261,6 +272,7 @@
 
         /**
         * 선택한 이미지의 metaData가 담겨 있는 Object
+        * @type: Object
         */
         metaData: {
           type: Object
@@ -268,6 +280,7 @@
 
         /**
         * input field에 full url을 표시할지 여부를 결정 합니다.
+        * @type: Boolean
         */
         displayFullUrl: {
           type: Boolean,
@@ -276,6 +289,7 @@
 
         /**
         * baseUrl을 변수화 하기 위해 사용하는 property
+        * @type: String
         */
         baseUrlAlias: {
           type: String
@@ -283,6 +297,7 @@
 
         /**
         * storage를 초기에 설정하기 위한 property
+        * @type: String
         */
         defaultStorage: {
           type: String,
@@ -291,6 +306,7 @@
 
         /**
         * ajax sorting field
+        * @type: Array
         */
         sortFields: {
           type: Array,
@@ -304,6 +320,7 @@
 
         /**
         * 이름으로 검색 할 때 추가되는 검색 조건
+        * @type: Array
         */
         queryFields: {
           type: Array,
@@ -312,6 +329,7 @@
 
         /**
         * storage combo를 통해 검색 조건을 설정하기 위한 property
+        * @type: Array
         */
         storageFilters: {
           type: Array
@@ -319,6 +337,7 @@
 
         /**
         * upload 버튼 활성화 여부
+        * @type: Boolean
         */
         useUpload: {
           type: Boolean,
@@ -327,6 +346,7 @@
 
         /**
         * 검색 조건에 쓰일 name
+        * @type: String
         */
         searchName: {
           type: String
@@ -334,6 +354,7 @@
 
         /**
         * 검색 조건에 쓰일 storage
+        * @type: String
         */
         searchStorage: {
           type: String
@@ -342,7 +363,7 @@
 
       observers: [
           'onSearchStorageArrayChange(searchStorageArray)'
-      ],      
+      ],
 
       listeners: {
         'things-card-image-selected': '_onImageSelected',
@@ -351,7 +372,11 @@
         'things-combo-value-changed': 'storageChanged',
         'file-selector-dialog.iron-overlay-opened': 'refreshFiles'
       },
-
+      /**
+       * [description]
+       * @param  {String}   dataObj
+       * @param  {Function} callback
+       */
       open: function(dataObj, callback) {
         this.callback = '';
         this.defaultStorage = '';
@@ -384,7 +409,7 @@
         this.dataObj.attachment = e.detail;
         this.callback.apply(this.dataObj.owner, [this.dataObj]);
         this.$['file-selector-dialog'].close();
-      },      
+      },
 
       /**
        * 다음 페이지 이동
@@ -409,10 +434,10 @@
         if(e.charCode == 13) {
           this._onSearchFormTap();
         }
-      },      
-
+      },
       /**
-       * storage combo에서 값변경시
+       * storage combo에서 값 변경시
+       * @param  {event} event
        */
       storageChanged: function(event) {
         if (event.detail.value && typeof(event.detail.value) == 'number') {
@@ -431,6 +456,7 @@
 
       /**
        * searchStorage Array를 받아 와서 String으로 바꾸어 searchStorage에 설정한다.
+       * @param  {Array} searchStorageArray
        */
       onSearchStorageArrayChange: function(searchStorageArray){
         var StorageArr = searchStorageArray.map(function(storage){
@@ -445,6 +471,7 @@
 
       /**
        * ajax 호출을 통해 받은 lastResponse에서 image 파일이 아닌 것들을 filltering
+       * @param  {Object} lastResponse
        */
       _responseChanged: function(lastResponse) {
         var newItems = lastResponse && lastResponse.items ? lastResponse.items : [];
@@ -505,9 +532,10 @@
         this.openPopupView(upload, true);
       },
 
-      /**
-       * 전달받은 defaultStorage를 이용하여 ajax 호출 합니다.
-       */
+       /**
+        * 전달받은 defaultStorage를 이용하여 ajax 호출 합니다.
+        * @param  {String} defaultStorage
+        */
       _defaultStorageChanged: function(defaultStorage) {
         if (defaultStorage) {
           this.$['default-storage'].resourceUrl = 'storage_infos/show_by_name?name=' + defaultStorage;
@@ -516,6 +544,7 @@
 
       /**
        * ajax 호출 listner로 response를 통해 storage의 값들을 초기화 합니다.
+       * @param  {event} event
        */
       _defaultStorageValueChanged: function(event) {
         this.searchStorage = event.detail.id;

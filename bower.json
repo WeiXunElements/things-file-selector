@@ -4,7 +4,7 @@
   "authors": [
     "Hatio Lab. <heartyoh@hatiolab.com>"
   ],
-  "description": "An element providing Things file selector.",
+  "description": "파일 선택기.",
   "keywords": [
     "web-component",
     "polymer",

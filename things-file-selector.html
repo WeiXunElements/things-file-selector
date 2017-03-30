@@ -148,21 +148,24 @@
             properties: {
                 /**
                  * file selector button 표시 여부
-                 */
+                 * @type: Boolean
+                 ******/
                 buttonHid: {
                     type: Boolean,
                     value: false
                 },
                 /**
                  * selector field 앞에 붙는 label property
-                 */
+                 * @type: String
+                 ******/
                 label: {
                     type: String
                 },
 
                 /**
                  * image 선택시 field에 mapping 되는 value property
-                 */
+                 * @type: String
+                 ******/
                 value: {
                     type: String,
                     observer: '_valueChanged'
@@ -209,7 +212,7 @@
                 } else {
                   this.set('objValue',dataObj.attachment);
                 }
-              },            
+              },
 
             /**
              * 선택한 이미지의 정보들을 삭제 합니다.

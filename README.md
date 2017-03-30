@@ -1,7 +1,14 @@
 # things-file-selector
 
-An element providing a starting point for your own reusable Polymer elements.
+#### 파일 선택기
 
+  Example:
+
+```html
+      <things-file-selector
+        resource-url="attachments">
+      </things-file-selector>
+```
 
 ## Dependencies
 
@@ -21,11 +28,11 @@ If you wish to work on your element in isolation, we recommend that you use
 [Polyserve](https://github.com/PolymerLabs/polyserve) to keep your element's
 bower dependencies in line. You can install it via:
 
-    npm install -g polyserve
+    npm install -g polymer-cli
 
 And you can run it via:
 
-    polyserve
+    polymer serve
 
 Once running, you can preview your element at
 `http://localhost:8080/components/things-file-selector/`, where `things-file-selector` is the name of the directory containing it.
