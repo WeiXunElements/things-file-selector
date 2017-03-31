@@ -148,24 +148,27 @@
             properties: {
                 /**
                  * file selector button 표시 여부
-                 * @type: Boolean
-                 ******/
+                 * ********
+                 * @type {String}
+                 */
                 buttonHid: {
                     type: Boolean,
                     value: false
                 },
                 /**
                  * selector field 앞에 붙는 label property
-                 * @type: String
-                 ******/
+                 * ********
+                 * @type {String}
+                 */
                 label: {
                     type: String
                 },
 
                 /**
                  * image 선택시 field에 mapping 되는 value property
-                 * @type: String
-                 ******/
+                 * ********
+                 * @type {String}
+                 */
                 value: {
                     type: String,
                     observer: '_valueChanged'
@@ -181,6 +184,7 @@
 
             /**
              * 버튼 클릭시 file selector dialog toggle
+             * ********
              */
             toggleFileSelector: function() {
                 if (this.newItems && this.newItems.length > 0) {
@@ -216,6 +220,7 @@
 
             /**
              * 선택한 이미지의 정보들을 삭제 합니다.
+             * *******
              */
             clearValue: function() {
                 this.value = '';
