@@ -114,7 +114,7 @@
       last-response="{{lastResponse}}">
     </things-ajax>
 
-    <paper-dialog id="file-selector-dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" modal>
+    <paper-dialog id="file-selector-dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" modal no-cancel-on-esc-key="[[noCancelOnEscKey]]">
       <paper-toolbar>
         <span class="title">[[title]]</span>
         <div class="buttonsGroup">
@@ -378,6 +378,15 @@
         */
         searchStorage: {
           type: String
+        },
+        /**
+         * Set to true to disable canceling the overlay with the ESC key.
+         * True로 설정시 cancel dialog에서 ESC key로 꺼지지 않음
+         * @type {Boolean}
+         */
+        noCancelOnEscKey:{
+          type: Boolean,
+          value: false
         }
       },
 
