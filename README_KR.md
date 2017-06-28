@@ -1,8 +1,6 @@
 # things-file-selector
 
-## 파일 선택용 컴포넌트
-
-`things-file-selector-toggle`를 통하여 `things-dialog-manager`로 Event전송하여 `things-file-selector-dialog`를 화면에 표현함.
+## 파일 선택용 컴포넌트, `things-file-selector-toggle`를 통하여 `things-dialog-manager`로 Event전송하여 `things-file-selector-dialog`를 화면에 표현함.
 
 Example:
 
