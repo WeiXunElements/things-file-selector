@@ -27,6 +27,8 @@ Copyright © HatioLab Inc. All rights reserved.
         background-color: var(--things-whitegrey-background-color);
       }
       paper-dialog {
+        height: 80%;
+        width: 70%;
         position: fixed;
         top: 10%;
         bottom: 10%;
@@ -119,7 +121,7 @@ Copyright © HatioLab Inc. All rights reserved.
     </things-ajax>
 
     <paper-dialog id="file-selector-dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" modal no-cancel-on-esc-key="[[noCancelOnEscKey]]">
-      <paper-toolbar>
+      <paper-toolbar  id="file-selector-toolbar">
         <span class="title">[[title]]</span>
         <div class="buttonsGroup">
           <button dialog-dismiss class="close-btn"></button>
@@ -165,7 +167,8 @@ Copyright © HatioLab Inc. All rights reserved.
 
       behaviors: [
         Things.GlobalBehavior,
-        Things.ViewOpenBehavior
+        Things.ViewOpenBehavior,
+        Things.DialogResizeBehavior
       ],
 
       properties: {
@@ -391,9 +394,16 @@ Copyright © HatioLab Inc. All rights reserved.
         noCancelOnEscKey:{
           type: Boolean,
           value: false
+        },
+        _dialogId:{
+          type: String,
+          value: 'file-selector-dialog'
+        },
+        _dragTarget:{
+          type: String,
+          value: 'file-selector-toolbar'
         }
       },
-
       observers: [
           'onSearchStorageArrayChange(searchStorageArray)'
       ],
