@@ -1,6 +1,6 @@
 {
   "name": "things-file-selector",
-  "version": "v2.2.2",
+  "version": "v2.2.3",
   "authors": ["Hatio Lab. <heartyoh@hatiolab.com>"],
   "description": "파일 선택기.",
   "keywords": ["web-component", "polymer", "seed"],
