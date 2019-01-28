@@ -2,19 +2,31 @@
 @license
 Copyright © HatioLab Inc. All rights reserved.
 -->
-<link ref="import" href="../polymer/polymer.html">
-<link ref="import" href="../paper-dialog/paper-dialog.html">
-<link ref="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link ref="import" href="../paper-toolbar/paper-toobar.html">
-<link rel="import" href="../iron-scroll-threshold/iron-scroll-threshold.html">
+<link ref="import" href="../polymer/polymer.html" />
+<link ref="import" href="../paper-dialog/paper-dialog.html" />
+<link
+  ref="import"
+  href="../paper-dialog-scrollable/paper-dialog-scrollable.html"
+/>
+<link ref="import" href="../paper-toolbar/paper-toolbar.html" />
+<link rel="import" href="../iron-scroll-threshold/iron-scroll-threshold.html" />
 
-<link ref="import" href="../things-ajax/things-ajax.html">
-<link ref="import" href="../things-i18n-msg/things-i18n-msg.html">
-<link ref="import" href="../things-card-image/things-card-image-list.html">
-<link rel="import" href="../things-global-behavior/things-global-behavior.html">
-<link rel="import" href="../things-view-open-behavior/things-view-open-behavior.html">
-<link rel="import" href="../things-upload/things-file-upload.html">
-<link rel="import" href="../things-dialog-resize-behavior/things-dialog-resize-behavior.html">
+<link ref="import" href="../things-ajax/things-ajax.html" />
+<link ref="import" href="../things-i18n-msg/things-i18n-msg.html" />
+<link ref="import" href="../things-card-image/things-card-image-list.html" />
+<link
+  rel="import"
+  href="../things-global-behavior/things-global-behavior.html"
+/>
+<link
+  rel="import"
+  href="../things-view-open-behavior/things-view-open-behavior.html"
+/>
+<link rel="import" href="../things-upload/things-file-upload.html" />
+<link
+  rel="import"
+  href="../things-dialog-resize-behavior/things-dialog-resize-behavior.html"
+/>
 
 <!--
   File Selector Dialog
@@ -36,20 +48,20 @@ Copyright © HatioLab Inc. All rights reserved.
         left: 15%;
         right: 15%;
         margin: 0px;
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
+        @apply (--layout-flex);
+        @apply (--layout-vertical);
       }
       paper-dialog::shadow .toolbar-tools.paper-toolbar {
-        padding: 0
+        padding: 0;
       }
       paper-dialog::shadow span.title.things-image-selector {
-        margin-left: 15px !important
+        margin-left: 15px !important;
       }
       paper-toolbar {
         background-color: var(--things-primary-background-color);
         height: 45px;
         margin-top: 0px !important;
-        @apply(--things-padding-clear)
+        @apply (--things-padding-clear);
       }
       paper-toolbar::shadow #topBar {
         height: 45px;
@@ -59,15 +71,15 @@ Copyright © HatioLab Inc. All rights reserved.
         line-height: initial !important;
       }
       fixedorm {
-        @apply(--things-default-padding);
+        @apply (--things-default-padding);
         padding-bottom: 5px;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
       paper-fab {
-        @apply(--things-search-fab);
+        @apply (--things-search-fab);
       }
       .close-btn {
-       @apply(--things-header-button);
+        @apply (--things-header-button);
         background: url(/images/icon-close.png) 100% 50% no-repeat;
         margin-right: 10px;
       }
@@ -78,7 +90,7 @@ Copyright © HatioLab Inc. All rights reserved.
         background-color: #f6f6f6;
         margin: 0;
         padding: 15px 10px 3px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, .1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       }
       paper-material::shadow things-combo iron-icon {
         top: -3px;
@@ -87,26 +99,34 @@ Copyright © HatioLab Inc. All rights reserved.
         -moz-border-radius: 4px;
         border-radius: 4px;
       }
-      iron-scroll-threshold+paper-toolbar {
+      iron-scroll-threshold + paper-toolbar {
         background-color: transparent;
         margin-bottom: 5px;
       }
-      iron-scroll-threshold+paper-toolbar::shadow #topBar {
+      iron-scroll-threshold + paper-toolbar::shadow #topBar {
         float: right;
-        margin-right: 9px
+        margin-right: 9px;
       }
     </style>
 
-    <things-i18n-msg msgid="label.image-selector" msg="{{lImageSelector}}" auto hidden>Image Selector</things-i18n-msg>
-    <things-i18n-msg msgid="label.name" msg="{{lName}}" auto hidden>Name</things-i18n-msg>
-    <things-i18n-msg msgid="label.storage" msg="{{lStorage}}" auto hidden>Storage</things-i18n-msg>
-    <things-i18n-msg msgid="button.upload" msg="{{bUpload}}" auto hidden>Upload</things-i18n-msg>
-
-    <things-ajax
+    <things-i18n-msg
+      msgid="label.image-selector"
+      msg="{{ lImageSelector }}"
       auto
-      id="default-storage"
-      resource-action="get">
-    </things-ajax>
+      hidden
+      >Image Selector</things-i18n-msg
+    >
+    <things-i18n-msg msgid="label.name" msg="{{ lName }}" auto hidden
+      >Name</things-i18n-msg
+    >
+    <things-i18n-msg msgid="label.storage" msg="{{ lStorage }}" auto hidden
+      >Storage</things-i18n-msg
+    >
+    <things-i18n-msg msgid="button.upload" msg="{{ bUpload }}" auto hidden
+      >Upload</things-i18n-msg
+    >
+
+    <things-ajax auto id="default-storage" resource-action="get"> </things-ajax>
 
     <things-ajax
       id="attachment-search"
@@ -117,28 +137,53 @@ Copyright © HatioLab Inc. All rights reserved.
       limit="[[limit]]"
       sort-fields="[[sortFields]]"
       query-fields="[[queryFields]]"
-      loading="{{loading}}"
-      last-response="{{lastResponse}}">
+      loading="{{ loading }}"
+      last-response="{{ lastResponse }}"
+    >
     </things-ajax>
 
-    <paper-dialog id="file-selector-dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" modal no-cancel-on-esc-key="[[noCancelOnEscKey]]">
-      <paper-toolbar  id="file-selector-toolbar">
+    <paper-dialog
+      id="file-selector-dialog"
+      entry-animation="scale-up-animation"
+      exit-animation="fade-out-animation"
+      modal
+      no-cancel-on-esc-key="[[noCancelOnEscKey]]"
+    >
+      <paper-toolbar id="file-selector-toolbar">
         <span class="title">[[title]]</span>
         <div class="buttonsGroup">
           <button dialog-dismiss class="close-btn"></button>
         </div>
       </paper-toolbar>
 
-      <paper-material elevation="0" on-keypress="handleKeyPress">
+      <paper-material elevation="0" on-keypress="(handleKeyPress)">
         <div class="layout vertical flex">
-          <form is="iron-form" action="[[action]]" content-type="[[contentType]]" last-response="{{lastResponse}}" with-credentials="[[withCredentials]]">
-          <div id="fields" class="layout vertical flex">
-            <div class="layout horizontal flex">
-              <things-input-field label="Name" value="{{searchName}}"></things-input-field>
-              <things-storage-combo label="Storage" items ="{{searchStorageArray}}" query-fields="[[storageFilters]]" hidden="[[useDefaultStorage]]"></things-storage-combo>
+          <form
+            is="iron-form"
+            action="[[action]]"
+            content-type="[[contentType]]"
+            last-response="{{ lastResponse }}"
+            with-credentials="[[withCredentials]]"
+          >
+            <div id="fields" class="layout vertical flex">
+              <div class="layout horizontal flex">
+                <things-input-field
+                  label="Name"
+                  value="{{ searchName }}"
+                ></things-input-field>
+                <things-storage-combo
+                  label="Storage"
+                  items="{{ searchStorageArray }}"
+                  query-fields="[[storageFilters]]"
+                  hidden="[[useDefaultStorage]]"
+                ></things-storage-combo>
+              </div>
             </div>
-          </div>
-          <paper-fab icon="search" title="search" on-tap="_onSearchFormTap"></paper-fab>
+            <paper-fab
+              icon="search"
+              title="search"
+              on-tap="(_onSearchFormTap)"
+            ></paper-fab>
           </form>
         </div>
       </paper-material>
@@ -149,16 +194,22 @@ Copyright © HatioLab Inc. All rights reserved.
         items="[[newItems]]"
         detail-fields="[[detailFields]]"
         is-selector
-        display-full-url>
+        display-full-url
+      >
       </things-card-image-list>
 
-      <iron-scroll-threshold id="scroller" scroll-target="card-list" on-lower-threshold="goNextPage">
+      <iron-scroll-threshold
+        id="scroller"
+        scroll-target="card-list"
+        on-lower-threshold="(goNextPage)"
+      >
       </iron-scroll-threshold>
 
       <paper-toolbar>
-        <things-button on-tap="toggleFileUpload" hidden="[[!useUpload]]">Upload</things-button>
+        <things-button on-tap="(toggleFileUpload)" hidden="[[!useUpload]]"
+          >Upload</things-button
+        >
       </paper-toolbar>
-
     </paper-dialog>
   </template>
 
@@ -174,82 +225,82 @@ Copyright © HatioLab Inc. All rights reserved.
 
       properties: {
         /**
-        * selector dialog 상단에 표기 되는 title
-        * ********
-        * @type {String}
-        */
+         * selector dialog 상단에 표기 되는 title
+         * ********
+         * @type {String}
+         */
         title: {
           type: String,
           value: 'File Selector'
         },
 
         /**
-        * image objects를 호출할 resource url
-        * ********
-        * @type {String}
-        */
+         * image objects를 호출할 resource url
+         * ********
+         * @type {String}
+         */
         resourceUrl: {
           type: String,
           value: 'attachments'
         },
 
         /**
-        * 총 페이지 수
-        * ********
-        * @type {Number}
-        */
+         * 총 페이지 수
+         * ********
+         * @type {Number}
+         */
         totalCount: {
           type: Number,
           value: 0
         },
 
         /**
-        * 현재 페이지
-        * ********
-        * @type {Number}
-        */
+         * 현재 페이지
+         * ********
+         * @type {Number}
+         */
         page: {
           type: Number,
           value: 1
         },
 
         /**
-        * 한 페이지 당 보여질 레코드 수
-        * ********
-        * @type {Number}
-        */
+         * 한 페이지 당 보여질 레코드 수
+         * ********
+         * @type {Number}
+         */
         limit: {
           type: Number,
           value: 50
         },
 
         /**
-        * ajax 호출을 통해 받는 response
-        * @type: Object
-        */
+         * ajax 호출을 통해 받는 response
+         * @type: Object
+         */
         lastResponse: {
           type: Object,
           observer: '_responseChanged'
         },
 
         /**
-        * image가 아닌 파일들을 필터링한 후 초기화 하는 items object
-        * ********
-        * @type {Array}
-        */
+         * image가 아닌 파일들을 필터링한 후 초기화 하는 items object
+         * ********
+         * @type {Array}
+         */
         newItems: {
           type: Array,
           value: function() {
-            return [];
+            return []
           }
         },
 
         /**
-        * detail form field에 mapping 시킬 data 목록들로 빈간이 없이 ','로 구분하여 입력합니다.
-        * ex) name,description,file_size
-        * ********
-        * @type {String}
-        */
+         * detail form field에 mapping 시킬 data 목록들로 빈간이 없이 ','로 구분하여 입력합니다.
+         * ex) name,description,file_size
+         * ********
+         * @type {String}
+         */
         detailFields: {
           type: String,
           value: 'file_size'
@@ -287,103 +338,104 @@ Copyright © HatioLab Inc. All rights reserved.
           value: false
         },
 
-
         /**
-        * 선택한 이미지의 metaData가 담겨 있는 Object
-        * ********
-        * @type {Object}
-        */
+         * 선택한 이미지의 metaData가 담겨 있는 Object
+         * ********
+         * @type {Object}
+         */
         metaData: {
           type: Object
         },
 
         /**
-        * input field에 full url을 표시할지 여부를 결정 합니다.
-        * ********
-        * @type {Boolean}
-        */
+         * input field에 full url을 표시할지 여부를 결정 합니다.
+         * ********
+         * @type {Boolean}
+         */
         displayFullUrl: {
           type: Boolean,
           value: false
         },
 
         /**
-        * baseUrl을 변수화 하기 위해 사용하는 property
-        * ********
-        * @type {String}
-        */
+         * baseUrl을 변수화 하기 위해 사용하는 property
+         * ********
+         * @type {String}
+         */
         baseUrlAlias: {
           type: String
         },
 
         /**
-        * storage를 초기에 설정하기 위한 property
-        * ********
-        * @type {String}
-        */
+         * storage를 초기에 설정하기 위한 property
+         * ********
+         * @type {String}
+         */
         defaultStorage: {
           type: String,
           observer: '_defaultStorageChanged'
         },
 
         /**
-        * ajax sorting field
-        * ********
-        * @type {Array}
-        */
+         * ajax sorting field
+         * ********
+         * @type {Array}
+         */
         sortFields: {
           type: Array,
           value: function() {
-            return [{
-              field: 'created_at',
-              ascending: false
-            }];
+            return [
+              {
+                field: 'created_at',
+                ascending: false
+              }
+            ]
           }
         },
 
         /**
-        * 이름으로 검색 할 때 추가되는 검색 조건
-        * ********
-        * @type {Array}
-        */
+         * 이름으로 검색 할 때 추가되는 검색 조건
+         * ********
+         * @type {Array}
+         */
         queryFields: {
           type: Array,
           value: []
         },
 
         /**
-        * storage combo를 통해 검색 조건을 설정하기 위한 property
-        * ********
-        * @type {Array}
-        */
+         * storage combo를 통해 검색 조건을 설정하기 위한 property
+         * ********
+         * @type {Array}
+         */
         storageFilters: {
           type: Array
         },
 
         /**
-        * upload 버튼 활성화 여부
-        * ********
-        * @type {Boolean}
-        */
+         * upload 버튼 활성화 여부
+         * ********
+         * @type {Boolean}
+         */
         useUpload: {
           type: Boolean,
           value: false
         },
 
         /**
-        * 검색 조건에 쓰일 name
-        * ********
-        * @type {String}
-        */
+         * 검색 조건에 쓰일 name
+         * ********
+         * @type {String}
+         */
         searchName: {
           type: String
         },
 
         /**
-        * 검색 조건에 쓰일 storage
-        * ********
-        * @type {String}
-        */
+         * 검색 조건에 쓰일 storage
+         * ********
+         * @type {String}
+         */
         searchStorage: {
           type: String
         },
@@ -392,22 +444,20 @@ Copyright © HatioLab Inc. All rights reserved.
          * True로 설정시 cancel dialog에서 ESC key로 꺼지지 않음
          * @type {Boolean}
          */
-        noCancelOnEscKey:{
+        noCancelOnEscKey: {
           type: Boolean,
           value: false
         },
-        _dialogId:{
+        _dialogId: {
           type: String,
           value: 'file-selector-dialog'
         },
-        _dragTarget:{
+        _dragTarget: {
           type: String,
           value: 'file-selector-toolbar'
         }
       },
-      observers: [
-          'onSearchStorageArrayChange(searchStorageArray)'
-      ],
+      observers: ['onSearchStorageArrayChange(searchStorageArray)'],
 
       listeners: {
         'things-card-image-selected': '_onImageSelected',
@@ -423,16 +473,18 @@ Copyright © HatioLab Inc. All rights reserved.
        * @param  {Function} callback
        */
       open: function(dataObj, callback) {
-        this.callback = '';
-        this.defaultStorage = '';
-        this.defaultStorage = (dataObj.defaultStorage) ? dataObj.defaultStorage : this.defaultStorage;
+        this.callback = ''
+        this.defaultStorage = ''
+        this.defaultStorage = dataObj.defaultStorage
+          ? dataObj.defaultStorage
+          : this.defaultStorage
 
-        if(callback && dataObj) {
-          this.callback = callback;
-          this.dataObj = dataObj;
+        if (callback && dataObj) {
+          this.callback = callback
+          this.dataObj = dataObj
         }
 
-        this.$['file-selector-dialog'].open();
+        this.$['file-selector-dialog'].open()
       },
 
       /**
@@ -440,20 +492,22 @@ Copyright © HatioLab Inc. All rights reserved.
        * 만약 displayField가 정의 되었다면 detail에서 해당 필드 값을 value에 초기화 함 (기본값은 name)
        */
       _onImageSelected: function(e) {
-        var baseUrl = this.baseUrlAlias ? this.baseUrlAlias : this.get('globals.baseUrl');
-        var value = e.detail[this.valueField];
-        var displayValue = e.detail[this.displayField];
+        var baseUrl = this.baseUrlAlias
+          ? this.baseUrlAlias
+          : this.get('globals.baseUrl')
+        var value = e.detail[this.valueField]
+        var displayValue = e.detail[this.displayField]
 
-        if(this.displayFullUrl) {
-          value = baseUrl + '/download/' + value;
-          displayValue = value;
+        if (this.displayFullUrl) {
+          value = baseUrl + '/download/' + value
+          displayValue = value
         }
 
-        this.dataObj.value = value;
-        this.dataObj.displayValue = displayValue;
-        this.dataObj.attachment = e.detail;
-        this.callback.apply(this.dataObj.owner, [this.dataObj]);
-        this.$['file-selector-dialog'].close();
+        this.dataObj.value = value
+        this.dataObj.displayValue = displayValue
+        this.dataObj.attachment = e.detail
+        this.callback.apply(this.dataObj.owner, [this.dataObj])
+        this.$['file-selector-dialog'].close()
       },
 
       /**
@@ -462,15 +516,15 @@ Copyright © HatioLab Inc. All rights reserved.
        */
       goNextPage: function() {
         if (this.totalCount == 0) {
-          this.$.scroller.clearTriggers();
-          return;
+          this.$.scroller.clearTriggers()
+          return
         }
 
-        if ((this.page * this.limit) < this.totalCount) {
-          this.page = this.page + 1;
-          this.$['attachment-search'].generateRequest();
+        if (this.page * this.limit < this.totalCount) {
+          this.page = this.page + 1
+          this.$['attachment-search'].generateRequest()
         }
-        this.$.scroller.clearTriggers();
+        this.$.scroller.clearTriggers()
       },
 
       /**
@@ -478,8 +532,8 @@ Copyright © HatioLab Inc. All rights reserved.
        * *******
        */
       handleKeyPress: function(e) {
-        if(e.charCode == 13) {
-          this._onSearchFormTap();
+        if (e.charCode == 13) {
+          this._onSearchFormTap()
         }
       },
       /**
@@ -488,10 +542,10 @@ Copyright © HatioLab Inc. All rights reserved.
        * @param  {event} event
        */
       storageChanged: function(event) {
-        if (event.detail.value && typeof(event.detail.value) == 'number') {
-          this.searchStorage = event.detail.value;
+        if (event.detail.value && typeof event.detail.value == 'number') {
+          this.searchStorage = event.detail.value
         } else if (event.detail.item && event.detail.item.id) {
-          this.searchStorage = event.detail.item.id;
+          this.searchStorage = event.detail.item.id
         }
       },
 
@@ -499,7 +553,7 @@ Copyright © HatioLab Inc. All rights reserved.
        * search btn tap event
        */
       _onSearchFormTap: function() {
-        this.refreshFiles();
+        this.refreshFiles()
       },
 
       /**
@@ -507,14 +561,14 @@ Copyright © HatioLab Inc. All rights reserved.
        * *******
        * @param  {Array} searchStorageArray
        */
-      onSearchStorageArrayChange: function(searchStorageArray){
-        var StorageArr = searchStorageArray.map(function(storage){
-            if(storage)return storage.id;
-        });
-        var storages = JSON.stringify(StorageArr);
-        storages = storages.replace('null,','');
-        storages = storages.replace('[','');
-        storages = storages.replace(']','');
+      onSearchStorageArrayChange: function(searchStorageArray) {
+        var StorageArr = searchStorageArray.map(function(storage) {
+          if (storage) return storage.id
+        })
+        var storages = JSON.stringify(StorageArr)
+        storages = storages.replace('null,', '')
+        storages = storages.replace('[', '')
+        storages = storages.replace(']', '')
         this.searchStorage = storages
       },
 
@@ -523,13 +577,18 @@ Copyright © HatioLab Inc. All rights reserved.
        * @param  {Object} lastResponse
        */
       _responseChanged: function(lastResponse) {
-        var newItems = lastResponse && lastResponse.items ? lastResponse.items : [];
-        this.totalCount = lastResponse && lastResponse.total ? lastResponse.total : this.newItems.length;
+        var newItems =
+          lastResponse && lastResponse.items ? lastResponse.items : []
+        this.totalCount =
+          lastResponse && lastResponse.total
+            ? lastResponse.total
+            : this.newItems.length
         newItems.forEach(function(item) {
-            item.attachment_id = item.id;
-        });
+          item.attachment_id = item.id
+        })
 
-        this.newItems = (this.page == 1) ? newItems : this.newItems.concat(newItems);
+        this.newItems =
+          this.page == 1 ? newItems : this.newItems.concat(newItems)
       },
 
       /**
@@ -537,13 +596,13 @@ Copyright © HatioLab Inc. All rights reserved.
        * *******
        */
       refreshFiles: function() {
-        this.page = 1;
-        var searchName = this.searchName;
-        var searchStorage = this.searchStorage;
-        var filters = [];
+        this.page = 1
+        var searchName = this.searchName
+        var searchStorage = this.searchStorage
+        var filters = []
 
         if (this.newItems && this.newItems.length > 0) {
-          this.newItems = [];
+          this.newItems = []
         }
 
         if (searchName) {
@@ -551,7 +610,7 @@ Copyright © HatioLab Inc. All rights reserved.
             name: 'name',
             operator: 'contains',
             value: searchName
-          });
+          })
         }
 
         if (searchStorage) {
@@ -559,11 +618,11 @@ Copyright © HatioLab Inc. All rights reserved.
             name: 'storage_info_id',
             operator: 'in',
             value: searchStorage
-          });
+          })
         }
 
-        this.queryFields = filters;
-        this.$['attachment-search'].generateRequest();
+        this.queryFields = filters
+        this.$['attachment-search'].generateRequest()
       },
 
       /**
@@ -571,25 +630,26 @@ Copyright © HatioLab Inc. All rights reserved.
        * ******
        */
       toggleFileUpload: function() {
-        var upload = document.createElement('things-file-upload');
-        upload.id = 'file-upload';
-        upload.target = 'upload';
-        upload.method = 'POST';
-        upload.timeout = 300000;
-        upload.hidden = false;
-        upload.defaultStorage = this.defaultStorage;
-        upload.$.storage.queryFields = this.storageFilters;
-        upload.selectorHidden = this.useDefaultStorage;
-        this.openPopupView(upload, true);
+        var upload = document.createElement('things-file-upload')
+        upload.id = 'file-upload'
+        upload.target = 'upload'
+        upload.method = 'POST'
+        upload.timeout = 300000
+        upload.hidden = false
+        upload.defaultStorage = this.defaultStorage
+        upload.$.storage.queryFields = this.storageFilters
+        upload.selectorHidden = this.useDefaultStorage
+        this.openPopupView(upload, true)
       },
 
-       /**
-        * 전달받은 defaultStorage를 이용하여 ajax 호출 합니다.
-        * @param  {String} defaultStorage
-        */
+      /**
+       * 전달받은 defaultStorage를 이용하여 ajax 호출 합니다.
+       * @param  {String} defaultStorage
+       */
       _defaultStorageChanged: function(defaultStorage) {
         if (defaultStorage) {
-          this.$['default-storage'].resourceUrl = 'storage_infos/show_by_name?name=' + defaultStorage;
+          this.$['default-storage'].resourceUrl =
+            'storage_infos/show_by_name?name=' + defaultStorage
         }
       },
 
@@ -598,9 +658,9 @@ Copyright © HatioLab Inc. All rights reserved.
        * @param  {event} event
        */
       _defaultStorageValueChanged: function(event) {
-        this.searchStorage = event.detail.id;
-        this.refreshFiles();
+        this.searchStorage = event.detail.id
+        this.refreshFiles()
       }
-    });
+    })
   </script>
 </dom-module>
