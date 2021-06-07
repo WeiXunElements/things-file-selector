@@ -1,69 +1,62 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
-<!doctype html>
+<!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" />
 
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../things-file-selector.html">
-</head>
+    <link rel="import" href="../things-file-selector.html" />
+  </head>
 
-<body>
-
+  <body>
     <test-fixture id="things-date-picker-fixture">
-        <template>
-            <things-file-selector>
-                <h2>things-date-picker</h2>
-            </things-file-selector>
-        </template>
+      <template>
+        <things-file-selector>
+          <h2>things-date-picker</h2>
+        </things-file-selector>
+      </template>
     </test-fixture>
 
     <script>
-        suite('<things-file-selector>', function() {
+      suite('<things-file-selector>', function () {
+        var myEl;
 
-            var myEl;
-
-            setup(function() {
-                myEl = fixture('things-date-picker-fixture');
-            });
-
-            test('defines the "author" property', function() {
-                assert.equal(myEl.author.name, 'Dimitri Glazkov');
-                assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
-            });
-
-            test('says hello', function() {
-                assert.equal(myEl.sayHello(), 'things-date-picker says, Hello World!');
-
-                var greetings = myEl.sayHello('greetings Earthlings');
-                assert.equal(greetings, 'things-date-picker says, greetings Earthlings');
-            });
-
-            test('fires lasers', function(done) {
-                myEl.addEventListener('things-date-picker-lasers', function(event) {
-                    assert.equal(event.detail.sound, 'Pew pew!');
-                    done();
-                });
-                myEl.fireLasers();
-            });
-
-            test('distributed children', function() {
-                var els = myEl.getContentChildren();
-                assert.equal(els.length, 1, 'one distributed node');
-                assert.equal(els[0], myEl.querySelector('h2'), 'content distributed correctly');
-            });
-
+        setup(function () {
+          myEl = fixture('things-date-picker-fixture');
         });
 
+        test('defines the "author" property', function () {
+          assert.equal(myEl.author.name, 'Dimitri Glazkov');
+          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+        });
+
+        test('says hello', function () {
+          assert.equal(myEl.sayHello(), 'things-date-picker says, Hello World!');
+
+          var greetings = myEl.sayHello('greetings Earthlings');
+          assert.equal(greetings, 'things-date-picker says, greetings Earthlings');
+        });
+
+        test('fires lasers', function (done) {
+          myEl.addEventListener('things-date-picker-lasers', function (event) {
+            assert.equal(event.detail.sound, 'Pew pew!');
+            done();
+          });
+          myEl.fireLasers();
+        });
+
+        test('distributed children', function () {
+          var els = myEl.getContentChildren();
+          assert.equal(els.length, 1, 'one distributed node');
+          assert.equal(els[0], myEl.querySelector('h2'), 'content distributed correctly');
+        });
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

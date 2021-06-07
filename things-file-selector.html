@@ -1,28 +1,19 @@
 <!--
 @license
-Copyright © HatioLab Inc. All rights reserved.
+Copyright © 2015-2021 Shenzhen Weixun All rights reserved.
 -->
 <link ref="import" href="../polymer/polymer.html" />
 <link ref="import" href="../iron-input/iron-input.html" />
 <link ref="import" href="../iron-icon/iron-icon.html" />
 <link ref="import" href="../paper-icon-button/paper-icon-button.html" />
 <link ref="import" href="../paper-dialog/paper-dialog.html" />
-<link
-  ref="import"
-  href="../paper-dialog-scrollable/paper-dialog-scrollable.html"
-/>
+<link ref="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html" />
 <link ref="import" href="../paper-toolbar/paper-toolbar.html" />
 <link ref="import" href="../things-ajax/things-ajax.html" />
 <link ref="import" href="../things-card-image/things-card-image-list.html" />
 <link rel="import" href="../iron-scroll-threshold/iron-scroll-threshold.html" />
-<link
-  rel="import"
-  href="../things-global-behavior/things-global-behavior.html"
-/>
-<link
-  rel="import"
-  href="../things-view-open-behavior/things-view-open-behavior.html"
-/>
+<link rel="import" href="../things-global-behavior/things-global-behavior.html" />
+<link rel="import" href="../things-view-open-behavior/things-view-open-behavior.html" />
 <link rel="import" href="../things-upload/things-file-upload.html" />
 
 <!--
@@ -150,21 +141,10 @@ Copyright © HatioLab Inc. All rights reserved.
     <label hidden="[[buttonHid]]">[[label]]</label>
     <input is="iron-input" bind-value="{{value}}" hidden="[[buttonHid]]" />
     <!-- prettier-ignore-attribute on-tap -->
-    <paper-icon-button
-      hidden="[[buttonHid]]"
-      suffix
-      on-tap="clearValue"
-      icon="clear"
-      alt="clear"
-      title="clear"
-    >
+    <paper-icon-button hidden="[[buttonHid]]" suffix on-tap="clearValue" icon="clear" alt="clear" title="clear">
     </paper-icon-button>
     <!-- prettier-ignore-attribute on-tap -->
-    <iron-icon
-      prefix
-      hidden="[[buttonHid]]"
-      on-tap="toggleFileSelector"
-    ></iron-icon>
+    <iron-icon prefix hidden="[[buttonHid]]" on-tap="toggleFileSelector"></iron-icon>
   </template>
   <script>
     Polymer({
@@ -178,7 +158,7 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         buttonHid: {
           type: Boolean,
-          value: false
+          value: false,
         },
         /**
          * selector field 앞에 붙는 label property
@@ -186,7 +166,7 @@ Copyright © HatioLab Inc. All rights reserved.
          * @type {String}
          */
         label: {
-          type: String
+          type: String,
         },
 
         /**
@@ -196,50 +176,50 @@ Copyright © HatioLab Inc. All rights reserved.
          */
         value: {
           type: String,
-          observer: '_valueChanged'
-        }
+          observer: '_valueChanged',
+        },
       },
 
       /**
        * value 값이 변경 되었을때 발생하는 이벤트
        */
-      _valueChanged: function(value) {
-        this.fire('things-image-changed', value)
+      _valueChanged: function (value) {
+        this.fire('things-image-changed', value);
       },
 
       /**
        * 버튼 클릭시 file selector dialog toggle
        * ********
        */
-      toggleFileSelector: function() {
+      toggleFileSelector: function () {
         if (this.newItems && this.newItems.length > 0) {
-          this.newItems = []
+          this.newItems = [];
         }
 
         if (this.defaultStorage == null) {
-          this.defaultStorage = this.globals.defaultImageStorage
+          this.defaultStorage = this.globals.defaultImageStorage;
         }
         if (this.defaultStorage) {
-          this.useDefaultStorage = true
+          this.useDefaultStorage = true;
         }
 
         var event = {
           dataObj: dataObj,
-          callback: this._applySelectedImage.bind(this)
-        }
+          callback: this._applySelectedImage.bind(this),
+        };
 
-        this.fire('things-file-selector-toggle', event)
+        this.fire('things-file-selector-toggle', event);
       },
 
       /**
        * 이미지를 선택했을 때 ...
        */
-      _applySelectedImage: function(dataObj) {
+      _applySelectedImage: function (dataObj) {
         if (this.baseUrlAlias) {
-          this.value = dataObj.value
-          this.displayValue = dataObj.displayValue
+          this.value = dataObj.value;
+          this.displayValue = dataObj.displayValue;
         } else {
-          this.set('objValue', dataObj.attachment)
+          this.set('objValue', dataObj.attachment);
         }
       },
 
@@ -247,10 +227,10 @@ Copyright © HatioLab Inc. All rights reserved.
        * 선택한 이미지의 정보들을 삭제 합니다.
        * *******
        */
-      clearValue: function() {
-        this.value = ''
-        this.metaData = ''
-      }
-    })
+      clearValue: function () {
+        this.value = '';
+        this.metaData = '';
+      },
+    });
   </script>
 </dom-module>
